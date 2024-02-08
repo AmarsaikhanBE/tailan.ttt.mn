@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 import {
   CssBaseline,
   ThemeProvider,
@@ -28,7 +28,7 @@ export default ({ children }: { children: React.ReactNode }) => {
     <SessionProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {children}
+        <Suspense>{children}</Suspense>
         <SnackbarProvider maxSnack={5} />
       </ThemeProvider>
     </SessionProvider>

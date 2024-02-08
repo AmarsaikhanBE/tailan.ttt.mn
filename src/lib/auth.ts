@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
         const [user] = (await executeQuery(
           'SELECT id, name, position, permision, active, image, password FROM users WHERE username = ?',
           [username]
-        )) as User & any[];
+        )) as (User & any)[];
 
         if (user && (await bcrypt.compare(password, user.password)))
           return user;

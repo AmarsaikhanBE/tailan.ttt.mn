@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { executeQuery } from '@/lib/mysql';
 import upload from '@/lib/upload';
 import { NextRequest, NextResponse } from 'next/server';

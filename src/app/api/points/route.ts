@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { authOptions } from '@/lib/auth';
 import { executeQuery } from '@/lib/mysql';
 import { getServerSession } from 'next-auth';
