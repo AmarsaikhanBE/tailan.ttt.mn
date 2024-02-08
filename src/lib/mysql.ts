@@ -10,6 +10,7 @@ export const executeQuery = async (query: string, values?: any[] | any) => {
 
   try {
     const [result] = await connection.query(query, values);
+    await connection.end();
     return result;
   } catch (error) {
     throw error;
