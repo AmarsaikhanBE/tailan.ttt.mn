@@ -21,7 +21,7 @@ const Point = ({ name, max, defaultValue, changed }: any) => {
         variant="h4"
         textAlign="center"
         className={font.className}
-        fontFamily="'__Rubik_Marker_Hatch_bbb79a', '__Rubik_Marker_Hatch_Fallback_bbb79a'"
+        fontFamily="'__Rubik_Marker_Hatch_bbb79a', '__Rubik_Marker_Hatch_Fallback_bbb79a' !important"
         children={value}
       />
       <M.Slider
