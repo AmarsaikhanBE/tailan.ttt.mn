@@ -64,7 +64,7 @@ export const POST = async (request: NextRequest) => {
         )
     );
 
-    return NextResponse.json({ message: ['trying'] });
+    return NextResponse.json({ message: ['Ажилттай хадгалагдлаа.'] });
   } catch (error) {
     return NextResponse.json({
       message: ['Серверт алдаа гарлаа. Админд хандана уу!'],

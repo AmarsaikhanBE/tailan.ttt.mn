@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Rubik_Marker_Hatch } from 'next/font/google';
 import useSWR from 'swr';
@@ -19,7 +19,11 @@ const Point = ({ name, max, defaultValue, changed }: any) => {
     <M.Box sx={{ width: 200, paddingX: 4 }}>
       <p
         className={font.className}
-        style={{ fontSize: '2.125rem', textAlign: 'center', margin: 0 }}
+        style={{
+          fontSize: '2.125rem',
+          textAlign: 'center',
+          margin: 0,
+        }}
         children={value}
       />
       <M.Slider
@@ -135,6 +139,7 @@ const ReportData = ({
                     fontSize: '2.125rem',
                     textAlign: 'center',
                     margin: 0,
+                    width: 200,
                   }}
                   children={question.value?.value || 0}
                 />
@@ -323,16 +328,17 @@ export default () => {
                 }}
                 children="Нийт оноо"
               />
-              <M.Typography
-                variant="h1"
-                sx={{
+              <h1
+                style={{
+                  fontSize: '5rem',
                   position: 'absolute',
                   top: '50%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
+                  margin: 0,
                 }}
                 className={font.className}
-                children={data.total}
+                children={Number(data.sumP || 0) + Number(data.avgMP || 0)}
               />
             </M.Box>
           </M.Stack>

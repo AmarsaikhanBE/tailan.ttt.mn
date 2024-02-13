@@ -97,26 +97,34 @@ const Report = ({ value }: { value: any }) => {
                     sx={{ width: '100%' }}
                   >
                     {parent.children.map((child: any) => (
-                      <M.ListItem
+                      // <M.ListItem
+                      //   key={child.id}
+                      //   disablePadding
+                      //   dense
+                      //   sx={{
+                      //     paddingLeft: 4,
+                      //     '&:nth-of-type(odd)': {
+                      //       backgroundColor: 'rgba(0, 0, 0, 0.08)',
+                      //     },
+                      //   }}
+                      // >
+                      <M.ListItemButton
                         key={child.id}
-                        disablePadding
                         dense
                         sx={{
                           paddingLeft: 4,
-                          '&:nth-of-type(odd)>.MuiButtonBase-root': {
+                          '&:nth-of-type(odd)': {
                             backgroundColor: 'rgba(0, 0, 0, 0.08)',
                           },
                         }}
+                        href={`/tailan?reportId=${value.id}&departmentId=${child.id}&managerPoint=${value.managerPoint}`}
                       >
-                        <M.ListItemButton
-                          href={`/tailan?reportId=${value.id}&departmentId=${child.id}&managerPoint=${value.managerPoint}`}
-                        >
-                          <M.ListItemText
-                            primary={child.name}
-                            secondary={child.managerName}
-                          />
-                        </M.ListItemButton>
-                      </M.ListItem>
+                        <M.ListItemText
+                          primary={child.name}
+                          secondary={child.managerName}
+                        />
+                      </M.ListItemButton>
+                      // </M.ListItem>
                     ))}
                   </M.Collapse>
                 </M.ListItem>

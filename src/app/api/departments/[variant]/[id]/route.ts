@@ -13,7 +13,7 @@ export const GET = async (
   );
 
   const [deparment] = (await executeQuery(
-    `SELECT *, (SELECT SUM(value) AS sum FROM points WHERE departmentId = ${params.id} AND reportId = ${reportId}) + (SELECT AVG(value) FROM manager_points WHERE departmentId = ${params.id} AND reportId = ${reportId}) AS total FROM ${params.variant}_department WHERE id = ?`,
+    `SELECT *, (SELECT SUM(value) AS sum FROM points WHERE departmentId = ${params.id} AND reportId = ${reportId}) AS sumP, (SELECT AVG(value) FROM manager_points WHERE departmentId = ${params.id} AND reportId = ${reportId}) AS avgMP FROM ${params.variant}_department WHERE id = ?`,
     [params.id]
   )) as any;
 
@@ -44,7 +44,6 @@ export const PUT = async (
       );
 
     const image = await upload(file);
-    console.log(image);
 
     await executeQuery(
       `UPDATE ${params.variant}_department SET name = ?,${
