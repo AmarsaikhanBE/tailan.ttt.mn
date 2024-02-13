@@ -17,11 +17,9 @@ const Point = ({ name, max, defaultValue, changed }: any) => {
   const [value, setValue] = useState(defaultValue ?? 0);
   return (
     <M.Box sx={{ width: 200, paddingX: 4 }}>
-      <M.Typography
-        variant="h4"
-        textAlign="center"
+      <p
         className={font.className}
-        // fontFamily="'__Rubik_Marker_Hatch_bbb79a', '__Rubik_Marker_Hatch_Fallback_bbb79a' !important"
+        style={{ fontSize: '2.125rem', textAlign: 'center' }}
         children={value}
       />
       <M.Slider
