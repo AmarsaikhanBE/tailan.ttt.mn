@@ -19,7 +19,7 @@ const Point = ({ name, max, defaultValue, changed }: any) => {
     <M.Box sx={{ width: 200, paddingX: 4 }}>
       <p
         className={font.className}
-        style={{ fontSize: '2.125rem', textAlign: 'center' }}
+        style={{ fontSize: '2.125rem', textAlign: 'center', margin: 0 }}
         children={value}
       />
       <M.Slider
@@ -129,11 +129,13 @@ const ReportData = ({
                   />
                 </>
               ) : (
-                <M.Typography
-                  variant="h4"
-                  textAlign="center"
-                  width={200}
+                <p
                   className={font.className}
+                  style={{
+                    fontSize: '2.125rem',
+                    textAlign: 'center',
+                    margin: 0,
+                  }}
                   children={question.value?.value || 0}
                 />
               )}
@@ -226,11 +228,14 @@ const ReportData = ({
                       />
                     </>
                   ) : (
-                    <M.Typography
-                      variant="h3"
-                      textAlign="center"
-                      width={200}
+                    <p
                       className={font.className}
+                      style={{
+                        fontSize: '3rem',
+                        textAlign: 'center',
+                        margin: 0,
+                        width: 200,
+                      }}
                       children={v.value}
                     />
                   )}
