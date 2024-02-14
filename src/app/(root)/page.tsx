@@ -3,13 +3,18 @@
 import { Logo } from '@/components';
 import { fetcher } from '@/lib/swr';
 import * as M from '@mui/material';
+import { Rubik_Marker_Hatch } from 'next/font/google';
 import { useState } from 'react';
 import useSWR from 'swr';
 
+const font = Rubik_Marker_Hatch({ weight: '400', subsets: ['latin'] });
+
 const Report = ({ value }: { value: any }) => {
-  const { data, isLoading, mutate } = useSWR('/api/departments', fetcher);
+  const { data, isLoading } = useSWR('/api/departments', fetcher);
   const [open, setOpen] = useState<boolean>(false);
   const [openSub, setOpenSub] = useState<number | null>(null);
+
+  console.log(data);
 
   return (
     <M.Stack
@@ -90,6 +95,15 @@ const Report = ({ value }: { value: any }) => {
                       secondary={parent.managerName}
                       secondaryTypographyProps={{ color: 'primary.main' }}
                     />
+                    {parent.avg > 0 && (
+                      <M.ListItemIcon sx={{ color: 'info.main' }}>
+                        <p
+                          className={font.className}
+                          style={{ fontSize: '1.75rem', margin: 0 }}
+                          children={parent.avg + '%'}
+                        />
+                      </M.ListItemIcon>
+                    )}
                   </M.ListItemButton>
                   <M.Collapse
                     in={openSub === parent.id}
@@ -97,17 +111,6 @@ const Report = ({ value }: { value: any }) => {
                     sx={{ width: '100%' }}
                   >
                     {parent.children.map((child: any) => (
-                      // <M.ListItem
-                      //   key={child.id}
-                      //   disablePadding
-                      //   dense
-                      //   sx={{
-                      //     paddingLeft: 4,
-                      //     '&:nth-of-type(odd)': {
-                      //       backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                      //     },
-                      //   }}
-                      // >
                       <M.ListItemButton
                         key={child.id}
                         dense
@@ -123,8 +126,14 @@ const Report = ({ value }: { value: any }) => {
                           primary={child.name}
                           secondary={child.managerName}
                         />
+                        <M.ListItemIcon sx={{ color: 'info.main' }}>
+                          <p
+                            className={font.className}
+                            style={{ margin: 0 }}
+                            children={child.total + '%'}
+                          />
+                        </M.ListItemIcon>
                       </M.ListItemButton>
-                      // </M.ListItem>
                     ))}
                   </M.Collapse>
                 </M.ListItem>

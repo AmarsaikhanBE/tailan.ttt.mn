@@ -13,7 +13,7 @@ export const GET = async (
   );
 
   const [deparment] = (await executeQuery(
-    `SELECT *, (SELECT SUM(value) AS sum FROM points WHERE departmentId = ${params.id} AND reportId = ${reportId}) AS sumP, (SELECT AVG(value) FROM manager_points WHERE departmentId = ${params.id} AND reportId = ${reportId}) AS avgMP FROM ${params.variant}_department WHERE id = ?`,
+    `SELECT *, (SELECT SUM(value) FROM points WHERE departmentId = ${params.id} AND reportId = ${reportId}) AS sumP, (SELECT AVG(value) FROM manager_points WHERE departmentId = ${params.id} AND reportId = ${reportId}) AS avgMP FROM ${params.variant}_department WHERE id = ?`,
     [params.id]
   )) as any;
 

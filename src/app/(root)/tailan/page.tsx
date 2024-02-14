@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Rubik_Marker_Hatch } from 'next/font/google';
 import useSWR from 'swr';
