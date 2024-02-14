@@ -14,8 +14,6 @@ const Report = ({ value }: { value: any }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [openSub, setOpenSub] = useState<number | null>(null);
 
-  console.log(data);
-
   return (
     <M.Stack
       component="section"
@@ -157,7 +155,7 @@ const Report = ({ value }: { value: any }) => {
 };
 
 export default () => {
-  const { data, isLoading, mutate } = useSWR('/api/reports', fetcher);
+  const { data, isLoading } = useSWR('/api/reports', fetcher);
 
   return isLoading ? (
     <M.Stack
