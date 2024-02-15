@@ -1,9 +1,8 @@
-import { rejects } from 'assert';
 import { writeFile } from 'fs/promises';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { v4 } from 'uuid';
 
-export default (file: File) =>
+export default async (file: File) =>
   new Promise((resolve) => {
     if (!file.size) return null;
 
