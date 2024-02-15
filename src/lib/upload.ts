@@ -3,7 +3,7 @@ import { writeFile } from 'fs/promises';
 import { join, resolve } from 'path';
 import { v4 } from 'uuid';
 
-export default async (file: File) =>
+export default (file: File) =>
   new Promise((resolve) => {
     if (!file.size) return null;
 
