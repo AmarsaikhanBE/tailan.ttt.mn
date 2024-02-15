@@ -7,7 +7,7 @@ export default async (file: File) => {
 
   const buffer = Buffer.from(await file.arrayBuffer());
   const extention = file.name.split('.').pop();
-  const pathname = `/assets/${Date.now()}-${v4()}.${extention}`;
+  const pathname = `/${Date.now()}-${v4()}.${extention}`;
   await writeFile(join(process.cwd(), 'public' + pathname), buffer);
   return pathname;
 };

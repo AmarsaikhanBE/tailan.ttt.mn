@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default ({ children }: { children: React.ReactNode }) => (
   <html lang="mn">
-    <body style={{}}>
+    <body>
       <Provider>{children}</Provider>
     </body>
   </html>

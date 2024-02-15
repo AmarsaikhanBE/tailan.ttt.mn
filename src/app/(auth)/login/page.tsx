@@ -7,7 +7,6 @@ import * as M from '@mui/material';
 import * as I from '@mui/icons-material';
 import { Logo } from '@/components';
 import { enqueueSnackbar } from 'notistack';
-import { User } from '@/types';
 
 export default () => {
   const { status } = useSession();
