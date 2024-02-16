@@ -39,19 +39,19 @@ export const POST = async (request: NextRequest) => {
         { status: 422 }
       );
 
-    if (
-      Number(managerPoint) +
-        Number(
-          points.length > 1
-            ? points.reduce((a: string, b: string) => Number(a) + Number(b))
-            : points[0]
-        ) !==
-      100
-    )
-      return NextResponse.json(
-        { message: ['Тайлангийн нийт оноо 100 байх ёстой!'] },
-        { status: 406 }
-      );
+    // if (
+    //   Number(managerPoint) +
+    //     Number(
+    //       points.length > 1
+    //         ? points.reduce((a: string, b: string) => Number(a) + Number(b))
+    //         : points[0]
+    //     ) !==
+    //   100
+    // )
+    //   return NextResponse.json(
+    //     { message: ['Тайлангийн нийт оноо 100 байх ёстой!'] },
+    //     { status: 406 }
+    //   );
 
     const { insertId } = (await executeQuery(
       `INSERT INTO reports (name, managerPoint) VALUES (?, ?)`,
