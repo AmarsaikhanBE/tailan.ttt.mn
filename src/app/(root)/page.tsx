@@ -3,11 +3,11 @@
 import { Logo } from '@/components';
 import { fetcher } from '@/lib/swr';
 import * as M from '@mui/material';
-import { Rubik_Marker_Hatch } from 'next/font/google';
+import { Oswald } from 'next/font/google';
 import { useState } from 'react';
 import useSWR from 'swr';
 
-const font = Rubik_Marker_Hatch({ weight: '400', subsets: ['latin'] });
+const font = Oswald({ weight: '400', subsets: ['latin'] });
 
 const Report = ({ value }: { value: any }) => {
   const { data, isLoading } = useSWR('/api/departments', fetcher);
@@ -98,7 +98,7 @@ const Report = ({ value }: { value: any }) => {
                         <p
                           className={font.className}
                           style={{ fontSize: '1.75rem', margin: 0 }}
-                          children={parent.avg + '%'}
+                          children={parent.avg}
                         />
                       </M.ListItemIcon>
                     )}
@@ -127,8 +127,8 @@ const Report = ({ value }: { value: any }) => {
                         <M.ListItemIcon sx={{ color: 'info.main' }}>
                           <p
                             className={font.className}
-                            style={{ margin: 0 }}
-                            children={child.total + '%'}
+                            style={{ margin: '0 auto' }}
+                            children={Number(child.totalP)+Number(child.avgMP)}
                           />
                         </M.ListItemIcon>
                       </M.ListItemButton>
@@ -141,14 +141,18 @@ const Report = ({ value }: { value: any }) => {
             <M.Typography variant="body2" children="Мэдээлэл олдсонгүй." />
           )}
         </M.Collapse>
-        <M.Button
-          variant="contained"
-          size="large"
-          sx={{ marginX: 'auto', display: 'block' }}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? 'Хаах' : 'Дэлгэрэнгүй'}
-        </M.Button>
+	<M.Stack direction="row" gap={4} sx={{ marginX: 'auto' }}>
+          <M.Button
+            variant="contained"
+            size="large"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? 'Хаах' : 'Дэлгэрэнгүй'}
+          </M.Button>
+	  <M.Button size="large" href={`/${value.id}`} >
+	    Нийт оноо
+	  </M.Button>
+	</M.Stack>
       </M.Stack>
     </M.Stack>
   );

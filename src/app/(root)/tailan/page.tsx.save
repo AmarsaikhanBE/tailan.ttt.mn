@@ -358,24 +358,15 @@ export default () => {
 	    <M.Typography
 		variant="h4"
 		sx={{ textTransform: 'uppercase', flex: 1, fontWeight: 700 }}
-	    >
-	      Нийт оноо
-	    </M.Typography>
-	    <M.Box sx={{ width: 200, height: 200, position: 'relative' }}>
-	      <h1
-		style={{
-		  fontSize: '5rem',
-		  position: 'absolute',
-		  top: '50%',
-		  left: '50%',
-		  transform: 'translate(-50%, -50%)',
-		  margin: 0,
-		}}
-		className={font.className}
-		children={Number(data.sumP || 0) + Number(data.avgMP || 0)}
-	      />
-	    </M.Box>
-	  </M.Stack>
+	    >Нийт оноо</M.Typography>
+		<M.Box sx={{ width: 200, height: 200, position: 'relative' }}>
+			<h1
+				style={{ fontSize: '5rem', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', margin: 0, }}
+				className={font.className}
+				children={Number(data.sumP || 0) + Number(data.avgMP || 0)}
+			/>
+		</M.Box>
+	  </M.stack>
         </M.Container>
       ) : (
         <>
@@ -390,3 +381,4 @@ export default () => {
     </M.Stack>
   );
 };
+
