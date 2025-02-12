@@ -3,6 +3,13 @@ export const dynamic = 'force-dynamic';
 import { executeQuery } from '@/lib/mysql';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const GET = async (request: NextRequest, {params}: {params: {id: string}})=>{
+	const [report]=(await executeQuery('SELECT name FROM reports WHERE id = ?',[params.id]))as any[];
+	const departments=await executeQuery(`SELECT name, IFNULL((SELECT SUM(value) FROM points WHERE departmentId=child_department.id AND reportID = ${params.id}),0) as points, ROUND(IFNULL((SELECT AVG(value) FROM manager_points WHERE departmentId=child_department.id AND reportId=${params.id}),0),0) as avgMP FROM child_department ORDER BY points + avgMP DESC`);
+	report.departments=departments;
+	return NextResponse.json(report);
+};
+
 export const PUT = async (
   request: NextRequest,
   { params }: { params: { id: string } }

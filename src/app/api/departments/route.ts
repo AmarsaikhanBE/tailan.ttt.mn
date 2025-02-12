@@ -16,7 +16,6 @@ export const GET = async (request: NextRequest) => {
     p.children = filteredChildren;
     let total = 0;
     filteredChildren.map((c: any) => (total += Number(c.totalP)+ Number(c.avgMP)));
-    console.log(total);
     p.avg = (total / filteredChildren.length).toFixed(2);
   });
 
